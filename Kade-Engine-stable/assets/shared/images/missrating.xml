@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="missrating.png">
+    <SubTexture name="dying" x="167" y="19" width="104" height="95"/>
+    <SubTexture name="nice" x="23" y="25" width="95" height="105"/>
+    <SubTexture name="whooo" x="159" y="150" width="117" height="97"/>
+    <SubTexture name="ouch" x="13" y="175" width="110" height="93"/>
+</TextureAtlas>
