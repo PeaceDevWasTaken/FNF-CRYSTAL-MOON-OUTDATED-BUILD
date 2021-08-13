@@ -527,10 +527,10 @@ class Character extends FlxSprite
 					animation.addByPrefix('singLEFT', 'midna sing left', 24);
 	
 					addOffset('idle');
-					addOffset("singUP", 0, 40);
-					addOffset("singRIGHT", -10, 43);
-					addOffset("singLEFT", -161, -63);
-					addOffset("singDOWN", 50, -122);
+					addOffset("singUP", 4, 9);
+					addOffset("singRIGHT", -21, 1);
+					addOffset("singLEFT", 160, -43);
+					addOffset("singDOWN", 60, -70);
 	
 					playAnim('idle');
 		}
