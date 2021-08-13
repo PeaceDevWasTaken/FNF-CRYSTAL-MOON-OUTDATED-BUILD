@@ -1,2 +1,4 @@
 Tutorial:gf:1
-Lunar Beginnings:pico:2
+Lunar Beginnings:midna:2
+//dont forget to add or change things here too, probably also applies to storymenu.
+//remove these comments if you merge
