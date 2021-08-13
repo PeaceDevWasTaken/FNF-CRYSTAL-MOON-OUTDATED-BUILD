@@ -4,8 +4,10 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSubState;
 import flixel.math.FlxPoint;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.tweens.FlxEase;
 
 class GameOverSubstate extends MusicBeatSubstate
 {
@@ -46,10 +48,10 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.target = null;
 
 		bf.playAnim('firstDeath');
-		if(FlxG.random.bool(10))
-			{
-	//			FlxG.sound.play(Paths.music('coin', 'weekmidna')); testing stuff lmao
-			}
+		if (FlxG.random.bool(10))
+		{
+			//			FlxG.sound.play(Paths.music('coin', 'weekmidna')); testing stuff lmao
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -80,6 +82,17 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
 			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+			if (PlayState.curStage == 'midna')
+			{
+				if (FlxG.random.bool(66))
+				{
+					FlxG.sound.music.volume = 0.2;
+					FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 1, 16), function volume():Void
+					{
+						FlxTween.tween(FlxG.sound.music, {volume: 1}, 1, {ease: FlxEase.cubeInOut});
+					});
+				}
+			}
 		}
 
 		if (FlxG.sound.music.playing)

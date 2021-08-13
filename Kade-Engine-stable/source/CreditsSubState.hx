@@ -32,7 +32,7 @@ class CreditsSubState extends MusicBeatState
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"\n\nCREDITS:\n\n"
 			+ "\n\nLead: Alternate Peace\n\n"
-			+ "\n\nCoding: CarlDev\n\n"
+			+ "\n\nCoding: CarlDev & Alternate Peace\n\n"
 			+ "\n\nMusic: Ghasty\n\n"
 			+ "\n\nArt and Animation: Meliach, Kitty, Haram!64\n\n"
 			+ "\n\nVoice Acting: CaitlinDiVA\n\n"
@@ -40,7 +40,7 @@ class CreditsSubState extends MusicBeatState
 			+ "\n\nEXTRA CREDITS:\n\n"
 			+ "\n\nNinjamuffin99, PhantomArcade, Kawaisprite, Evilsk8er\n\n"
 			+ "\n\nKadeDev\n\n"
-			+ "\n\nSPECIAL THANKS to Brightfyre\n\n",
+			+ "\n\nSPECIAL THANKS to Brightfyre and HayseedHere as well as slameron for helping with coding issues!\n\n",
 			18);
 		
 		txt.setFormat("VCR OSD Mono", 18, FlxColor.fromRGB(200, 200, 200), CENTER);

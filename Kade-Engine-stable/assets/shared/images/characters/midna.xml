@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="midna_assets.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="midna idle dance0000" x="0" y="0" width="395" height="795"/>
+	<SubTexture name="midna idle dance0001" x="0" y="0" width="395" height="795"/>
+	<SubTexture name="midna idle dance0002" x="395" y="0" width="394" height="795" frameX="0" frameY="0" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0003" x="395" y="0" width="394" height="795" frameX="0" frameY="0" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0004" x="789" y="0" width="391" height="793" frameX="0" frameY="-2" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0005" x="789" y="0" width="391" height="793" frameX="0" frameY="-2" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0006" x="1180" y="0" width="388" height="792" frameX="0" frameY="-3" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0007" x="1180" y="0" width="388" height="792" frameX="0" frameY="-3" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0008" x="1568" y="0" width="385" height="791" frameX="0" frameY="-4" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0009" x="1568" y="0" width="385" height="791" frameX="0" frameY="-4" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0010" x="0" y="795" width="384" height="791" frameX="0" frameY="-4" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0011" x="0" y="795" width="384" height="791" frameX="0" frameY="-4" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0012" x="0" y="795" width="384" height="791" frameX="0" frameY="-4" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna idle dance0013" x="0" y="795" width="384" height="791" frameX="0" frameY="-4" frameWidth="395" frameHeight="795"/>
+	<SubTexture name="midna sing down0000" x="384" y="795" width="467" height="714" frameX="0" frameY="-11" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0001" x="384" y="795" width="467" height="714" frameX="0" frameY="-11" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0002" x="851" y="795" width="471" height="715" frameX="-7" frameY="-6" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0003" x="851" y="795" width="471" height="715" frameX="-7" frameY="-6" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0004" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0005" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0006" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0007" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0008" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0009" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0010" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0011" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0012" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing down0013" x="1322" y="795" width="465" height="722" frameX="-9" frameY="0" frameWidth="478" frameHeight="725"/>
+	<SubTexture name="midna sing left0000" x="0" y="1586" width="518" height="742" frameX="0" frameY="0" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0001" x="0" y="1586" width="518" height="742" frameX="0" frameY="0" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0002" x="518" y="1586" width="504" height="725" frameX="-15" frameY="-16" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0003" x="518" y="1586" width="504" height="725" frameX="-15" frameY="-16" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0004" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0005" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0006" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0007" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0008" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0009" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0010" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0011" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0012" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing left0013" x="1022" y="1586" width="496" height="724" frameX="-24" frameY="-17" frameWidth="520" frameHeight="742"/>
+	<SubTexture name="midna sing right0000" x="1518" y="1586" width="338" height="786" frameX="0" frameY="-12" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0001" x="1518" y="1586" width="338" height="786" frameX="0" frameY="-12" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0002" x="0" y="2372" width="332" height="795" frameX="-19" frameY="-2" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0003" x="0" y="2372" width="332" height="795" frameX="-19" frameY="-2" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0004" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0005" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0006" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0007" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0008" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0009" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0010" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0011" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0012" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing right0013" x="332" y="2372" width="332" height="797" frameX="-13" frameY="0" frameWidth="351" frameHeight="798"/>
+	<SubTexture name="midna sing up0000" x="664" y="2372" width="421" height="783"/>
+	<SubTexture name="midna sing up0001" x="664" y="2372" width="421" height="783"/>
+	<SubTexture name="midna sing up0002" x="1085" y="2372" width="412" height="758" frameX="-9" frameY="-18" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0003" x="1085" y="2372" width="412" height="758" frameX="-9" frameY="-18" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0004" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0005" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0006" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0007" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0008" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0009" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0010" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0011" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0012" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+	<SubTexture name="midna sing up0013" x="1497" y="2372" width="414" height="756" frameX="-7" frameY="-19" frameWidth="421" frameHeight="783"/>
+</TextureAtlas>

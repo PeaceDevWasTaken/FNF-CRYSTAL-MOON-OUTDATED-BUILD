@@ -515,6 +515,24 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+				
+				case 'midna':
+					// Midna ANIMATION LOADING CODE
+					tex = Paths.getSparrowAtlas('characters/midna', 'shared');
+					frames = tex;
+					animation.addByPrefix('idle', 'midna idle dance', 24);
+					animation.addByPrefix('singUP', 'midna sing up', 24);
+					animation.addByPrefix('singRIGHT', 'midna sing right', 24);
+					animation.addByPrefix('singDOWN', 'midna sing down', 24);
+					animation.addByPrefix('singLEFT', 'midna sing left', 24);
+	
+					addOffset('idle');
+					addOffset("singUP", 0, 40);
+					addOffset("singRIGHT", -10, 43);
+					addOffset("singLEFT", -161, -63);
+					addOffset("singDOWN", 50, -122);
+	
+					playAnim('idle');
 		}
 
 		dance();
