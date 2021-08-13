@@ -84,14 +84,22 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
 			if (PlayState.curStage == 'midna')
 			{
-				if (FlxG.random.bool(66))
-				{
+			
+				
 					FlxG.sound.music.volume = 0.2;
-					FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 1, 16), function volume():Void
-					{
-						FlxTween.tween(FlxG.sound.music, {volume: 1}, 1, {ease: FlxEase.cubeInOut});
-					});
-				}
+					if (FlxG.random.bool(10))
+						{
+							FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 15, 16), function volume():Void
+								{
+									FlxTween.tween(FlxG.sound.music, {volume: 1}, 1, {ease: FlxEase.cubeInOut});
+								});
+						}
+					else
+						{FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 1, 14), function volume():Void
+						{
+							FlxTween.tween(FlxG.sound.music, {volume: 1}, 1, {ease: FlxEase.cubeInOut});
+						});}
+				
 			}
 		}
 
