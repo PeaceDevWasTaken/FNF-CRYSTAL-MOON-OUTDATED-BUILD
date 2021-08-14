@@ -844,6 +844,14 @@ class PlayState extends MusicBeatState
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
+		//	case 'midna':
+
+	//		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('bg/floor','weekmidna'));
+	//		bg.scrollfactor.set(0.1, 0.1);
+	//		add(bg);
+
+	//			FlxG.camera.setPosition(FlxG.width/2, FlxG.height/2);
+
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 260;
