@@ -855,7 +855,7 @@ class PlayState extends MusicBeatState
 	//			FlxG.camera.setPosition(FlxG.width/2, FlxG.height/2);
 
 			case 'midna':
-				gf.x -= 100;
+				gf.x -= 350;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 260;
