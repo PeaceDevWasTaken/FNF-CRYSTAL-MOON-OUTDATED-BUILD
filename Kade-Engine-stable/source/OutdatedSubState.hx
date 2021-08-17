@@ -107,15 +107,20 @@ class OutdatedSubState extends MusicBeatState
 
 		if (controls.ACCEPT)
 		{
+			#if desktop
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
+			#else
+			FlxG.switchState(new PiracyScreen());
+			 fancyOpenURL("https://ninja-muffin24.itch.io/funkin");
+			#end
 		}
 		super.update(elapsed);
 	}
 
 	function switchPage()
 		{
-			FlxG.sound.play(Paths.sound('scrollMenu'));
+
 
 			switch (page)
 			{
