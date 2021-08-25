@@ -112,7 +112,6 @@ class OutdatedSubState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 			#else
 			FlxG.switchState(new PiracyScreen());
-			 fancyOpenURL("https://ninja-muffin24.itch.io/funkin");
 			#end
 		}
 		super.update(elapsed);

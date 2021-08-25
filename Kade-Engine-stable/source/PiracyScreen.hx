@@ -3,11 +3,10 @@ import flixel.*;
 
 /**
  * ...
- * @author bbpanzu modified by me lol, ps check OutdatedSubState
+ * @author bbpanzu
  */
 class PiracyScreen extends MusicBeatState
 {
-
 	public function new() 
 	{
 		super();
@@ -30,7 +29,7 @@ class PiracyScreen extends MusicBeatState
 		super.update(elapsed);
 		
 		if (controls.ACCEPT){
-			FlxG.switchState(new MainMenuState());
+			fancyOpenURL("https://github.com/Alt-Peace/FNF-CRYSTAL-MOON");
 		}
 		
 		
