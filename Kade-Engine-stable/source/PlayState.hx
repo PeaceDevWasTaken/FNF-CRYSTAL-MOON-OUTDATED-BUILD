@@ -780,17 +780,11 @@ class PlayState extends MusicBeatState
 
 		var gfVersion:String = 'gf';
 
-		switch (SONG.gfVersion)
+		switch (curStage)
 		{
-			case 'gf-car':
-				gfVersion = 'gf-car';
-			case 'gf-midna':
+			case 'midna':
 				gfVersion = 'gf-midna';
-			case 'gf-christmas':
-				gfVersion = 'gf-christmas';
-			case 'gf-pixel':
-				gfVersion = 'gf-pixel';
-			default:
+			case 'tutorial':
 				gfVersion = 'gf';
 		}
 
@@ -844,6 +838,7 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		// REPOSITIONING PER STAGE
+		//shitty code broke so i decidedlol
 		switch (curStage)
 		{
 		//	case 'midna':
