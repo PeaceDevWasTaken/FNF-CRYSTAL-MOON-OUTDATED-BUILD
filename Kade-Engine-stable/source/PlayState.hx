@@ -831,6 +831,9 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+			case 'midna':
+				dad.y += -20;
+				camPos.set(dad.getGraphicMidpoint().x + 290, dad.getGraphicMidpoint().y);
 		}
 
 
@@ -838,7 +841,7 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		// REPOSITIONING PER STAGE
-		//shitty code broke so i decidedlol
+		//shitty code broke so i decided to cut it lol
 		switch (curStage)
 		{
 		//	case 'midna':
@@ -851,6 +854,7 @@ class PlayState extends MusicBeatState
 
 			case 'midna':
 				gf.x -= 350;
+				FlxG.camera.zoom = 0.12;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 260;
