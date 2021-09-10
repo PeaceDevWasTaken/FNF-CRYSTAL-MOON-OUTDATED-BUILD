@@ -149,8 +149,8 @@ class OutdatedSubState extends MusicBeatState
 								+ "\n\nThe Mod you see here is a spin off of my own stories.\n\n"
 								+ "\n\nNone of this is cannon to the actual lore as I have the actual\n\n"
 								+ "\n\nCannon lore Written down, and who knows I may turn that into\n\n"
-								+ "\n\nA fully blown animated series someday, or a game! But I'll need to see how-\n\n"
-								+ "\n\nwell this does first before that so, enjoy this until then.\n\n";								
+								+ "\n\nA fully blown animated series someday, or a game! But I'll need to see how well this does first before that so, enjoy this until then.\n\n"
+								+ "\n\nPress Enter To continue, and enjoy.\n\n";								
 			}
 		}
 }
