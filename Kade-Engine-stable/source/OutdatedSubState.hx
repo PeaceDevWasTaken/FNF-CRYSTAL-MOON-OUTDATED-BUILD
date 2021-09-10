@@ -88,8 +88,8 @@ class OutdatedSubState extends MusicBeatState
 		if(controls.RIGHT_P)
 			{
 				page++;
-				if (page > 3)
-					page = 3;
+				if (page > 4)
+					page = 4;
 				if (page < 1)
 					page = 1;
 				switchPage();
@@ -98,8 +98,8 @@ class OutdatedSubState extends MusicBeatState
 		if (controls.LEFT_P)
 			{
 				page--;
-				if (page > 3)
-					page = 3;
+				if (page > 4)
+					page = 4;
 				if (page < 1)
 					page = 1;
 				switchPage();
@@ -144,6 +144,13 @@ class OutdatedSubState extends MusicBeatState
 								+ "\n\nGamebanana page! Positive or negative, it's all apreciated!\n\n"
 								+ "\n\nHelp us develop the best mod possible!\n\n"
 								+ "\n\nWhat did u ask? Who's Candice?\n\n";
+				case 4:
+					txt.text =    "\n\nBefore You do hop into this mod I have one final thing to say.\n\n"
+								+ "\n\nThe Mod you see here is a spin off of my own stories.\n\n"
+								+ "\n\nNone of this is cannon to the actual lore as I have the actual\n\n"
+								+ "\n\nCannon lore Written down, and who knows I may turn that into\n\n"
+								+ "\n\nA fully blown animated series someday, or a game! But I'll need to see how-\n\n"
+								+ "\n\nwell this does first before that so, enjoy this until then.\n\n";								
 			}
 		}
 }

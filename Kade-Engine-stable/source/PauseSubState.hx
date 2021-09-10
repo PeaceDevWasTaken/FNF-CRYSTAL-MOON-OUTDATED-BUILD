@@ -21,7 +21,7 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode Off', "Change Difficulty", 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode Off', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -120,62 +120,6 @@ class PauseSubState extends MusicBeatSubstate
 		{
 			changeSelection(1);
 		}
-		
-		#if cpp
-			else if (leftP)
-			{
-				oldOffset = PlayState.songOffset;
-				PlayState.songOffset -= 1;
-				sys.FileSystem.rename(songPath + oldOffset + '.offset', songPath + PlayState.songOffset + '.offset');
-				perSongOffset.text = "Additive Offset (Left, Right): " + PlayState.songOffset + " - Description - " + 'Adds value to global offset, per song.';
-
-				// Prevent loop from happening every single time the offset changes
-				if(!offsetChanged)
-				{
-					grpMenuShit.clear();
-
-					menuItems = ['Restart Song', 'Exit to menu'];
-
-					for (i in 0...menuItems.length)
-					{
-						var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
-						songText.isMenuItem = true;
-						songText.targetY = i;
-						grpMenuShit.add(songText);
-					}
-
-					changeSelection();
-
-					cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-					offsetChanged = true;
-				}
-			}else if (rightP)
-			{
-				oldOffset = PlayState.songOffset;
-				PlayState.songOffset += 1;
-				sys.FileSystem.rename(songPath + oldOffset + '.offset', songPath + PlayState.songOffset + '.offset');
-				perSongOffset.text = "Additive Offset (Left, Right): " + PlayState.songOffset + " - Description - " + 'Adds value to global offset, per song.';
-				if(!offsetChanged)
-				{
-					grpMenuShit.clear();
-
-					menuItems = ['Restart Song', 'Exit to menu'];
-
-					for (i in 0...menuItems.length)
-					{
-						var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
-						songText.isMenuItem = true;
-						songText.targetY = i;
-						grpMenuShit.add(songText);
-					}
-
-					changeSelection();
-
-					cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-					offsetChanged = true;
-				}
-			}
-		#end
 
 		if (accepted)
 		{
@@ -190,7 +134,7 @@ class PauseSubState extends MusicBeatSubstate
 				case "Practice Mode On":
 					grpMenuShit.clear();
 
-					menuItems = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode Off', 'Change Difficulty', 'Exit to menu'];
+					menuItems = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode Off', 'Exit to menu'];
 					if(!PlayState.isStoryMode || PlayState.storyPlaylist.length < 2)
 						menuItems.remove(menuItems[2]);
 
@@ -211,7 +155,7 @@ class PauseSubState extends MusicBeatSubstate
 				case "Practice Mode Off":
 					grpMenuShit.clear();
 
-					menuItems = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode On', 'Change Difficulty', 'Exit to menu'];
+					menuItems = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode On', 'Exit to menu'];
 					if(!PlayState.isStoryMode || PlayState.storyPlaylist.length < 2)
 						menuItems.remove(menuItems[2]);
 
@@ -247,20 +191,21 @@ class PauseSubState extends MusicBeatSubstate
 					FlxG.sound.music.stop();
 					LoadingState.loadAndSwitchState(new PlayState());
 					
-				case "Change Difficulty":
-					grpMenuShit.clear();
-
-					menuItems = ['Back', 'Easy', 'Normal', 'Hard', 'Bleeding Edge'];
-					curSelected = 0;
-
-					for (i in 0...menuItems.length)
-					{
-						var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
-						songText.isMenuItem = true;
-						songText.targetY = i;
-						grpMenuShit.add(songText);
-					}
-
+					//this caused way too many crashes so it was removed
+	//			case "Change Difficulty":
+	//				grpMenuShit.clear();
+//
+//					menuItems = ['Back', 'Easy', 'Normal', 'Hard', 'Bleeding Edge'];
+//					curSelected = 0;
+//
+//					for (i in 0...menuItems.length)
+//					{
+//						var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
+//						songText.isMenuItem = true;
+//						songText.targetY = i;
+//						grpMenuShit.add(songText);
+//					}
+//
 					changeSelection();
 
 					cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
@@ -268,7 +213,7 @@ class PauseSubState extends MusicBeatSubstate
 				case "Back":
 					grpMenuShit.clear();
 
-					menuItems = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode Off', "Change Difficulty", 'Exit to menu'];
+					menuItems = ['Resume', 'Restart Song', 'Skip Song', 'Practice Mode Off', 'Exit to menu'];
 					curSelected = 0;
 
 					if(PlayState.practice)
