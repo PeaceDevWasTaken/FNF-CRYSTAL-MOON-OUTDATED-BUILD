@@ -15,6 +15,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	var camFollow:FlxObject;
 
 	var stageSuffix:String = "";
+	public static var sex:String = "";
 
 	public function new(x:Float, y:Float)
 	{
@@ -29,6 +30,11 @@ class GameOverSubstate extends MusicBeatSubstate
 				daBf = 'bf';
 		}
 
+		if (PlayState.SONG.song.toLowerCase() == 'balls')
+		{
+			sex = '-funni';
+		}
+
 		super();
 
 		Conductor.songPosition = 0;
@@ -38,8 +44,9 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 		add(camFollow);
+		
+		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix + sex));
 
-		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
 
 		// FlxG.camera.followLerp = 1;
@@ -84,9 +91,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
 			if (PlayState.curStage == 'midna')
 			{
-			
-				
-					FlxG.sound.music.volume = 0.2;
+				FlxG.sound.music.volume = 0.2;
 					if (FlxG.random.bool(10))
 						{
 							FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 15, 16), function volume():Void
@@ -125,12 +130,23 @@ class GameOverSubstate extends MusicBeatSubstate
 			isEnding = true;
 			bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
+			FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix + sex));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
-					LoadingState.loadAndSwitchState(new PlayState());
+					if (PlayState.SONG.song.toLowerCase() == 'balls')
+					{
+						PlayState.storyDifficulty = 1;
+
+						PlayState.SONG = Song.loadFromJson("balls", "balls");
+						PlayState.campaignScore = 0;
+						LoadingState.loadAndSwitchState(new PlayState(), true);
+					}
+					else
+					{
+						LoadingState.loadAndSwitchState(new PlayState());
+					}
 				});
 			});
 		}

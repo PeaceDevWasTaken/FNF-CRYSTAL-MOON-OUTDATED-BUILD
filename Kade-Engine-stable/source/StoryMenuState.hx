@@ -155,9 +155,9 @@ class StoryMenuState extends MusicBeatState
 			}
 		}
 
-		grpWeekCharacters.add(new MenuCharacter(0, 100, 0.5, false));
-		grpWeekCharacters.add(new MenuCharacter(450, 25, 0.9, true));
-		grpWeekCharacters.add(new MenuCharacter(850, 100, 0.5, true));
+		grpWeekCharacters.add(new MenuCharacter(0, 47, 0.5, false));
+		grpWeekCharacters.add(new MenuCharacter(425, 25, 0.9, true));
+		grpWeekCharacters.add(new MenuCharacter(790, 100, 0.6, true));
 
 		difficultySelectors = new FlxGroup();
 		add(difficultySelectors);
@@ -389,6 +389,8 @@ class StoryMenuState extends MusicBeatState
 		grpWeekCharacters.members[0].setCharacter(weekCharacters[curWeek][0]);
 		grpWeekCharacters.members[1].setCharacter(weekCharacters[curWeek][1]);
 		grpWeekCharacters.members[2].setCharacter(weekCharacters[curWeek][2]);
+
+
 
 		txtTracklist.text = "Tracks\n";
 		var stringThing:Array<String> = weekData[curWeek];

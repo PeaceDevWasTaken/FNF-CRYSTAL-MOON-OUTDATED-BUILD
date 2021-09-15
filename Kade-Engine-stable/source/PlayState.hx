@@ -253,6 +253,11 @@ class PlayState extends MusicBeatState
 		else
 			limit = 25;
 
+		if (SONG.song.toLowerCase() != 'balls'){
+			GameOverSubstate.sex = '';}
+
+		//shhhhhhhhh
+
 		repPresses = 0;
 		repReleases = 0;
 
@@ -1004,13 +1009,16 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		// Add Kade Engine watermark
-		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,"CUSTOM KE BUILD BY TEAM FUNKIN' FOREVER v0.26 ALPHA", 16);
+		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,"CUSTOM KE BUILD BY TEAM FUNKIN' FOREVER v0.26 ALPHA" + GameOverSubstate.sex, 16);
 		kadeEngineWatermark.setFormat(Paths.font("cake.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
 
 		if (FlxG.save.data.downscroll)
 			kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
+		if (!FlxG.save.data.watermark)
+			kadeEngineWatermark.alpha = 0;
+
 
 		// Miss limit text stuff
 
@@ -1042,7 +1050,12 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		if (offsetTesting)
 			scoreTxt.x += 300;
-		if(FlxG.save.data.botplay) scoreTxt.x = FlxG.width / 2 - 20;													  
+		if(FlxG.save.data.botplay) scoreTxt.x = FlxG.width / 2 - 20;	
+		
+		// offsets
+		scoreTxt.x += 100;
+		missLimitText.x += 15;
+
 		add(scoreTxt);
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
@@ -2487,7 +2500,7 @@ class PlayState extends MusicBeatState
 								health -= 0.075;
 								vocals.volume = 0;
 								if (theFunne)
-									noteMiss(daNote.noteData, daNote);
+									noteMiss(daNote.noteData, daNote, false);
 							}
 		
 							daNote.visible = false;
@@ -2662,6 +2675,7 @@ class PlayState extends MusicBeatState
 			var wife:Float = EtternaFunctions.wife3(noteDiff, Conductor.timeScale);
 			// boyfriend.playAnim('hey');
 			vocals.volume = 1;
+			// scoreTxt.screenCenter();
 	
 			var placement:String = Std.string(combo);
 	
@@ -3090,7 +3104,7 @@ class PlayState extends MusicBeatState
 							for (shit in 0...pressArray.length)
 								{ // if a direction is hit that shouldn't be
 									if (pressArray[shit] && !directionList.contains(shit))
-										noteMiss(shit, null);
+										noteMiss(shit, null, false);
 								}
 						}
 						for (coolNote in possibleNotes)
@@ -3108,7 +3122,7 @@ class PlayState extends MusicBeatState
 						{
 							for (shit in 0...pressArray.length)
 								if (pressArray[shit])
-									noteMiss(shit, null);
+									noteMiss(shit, null, false);
 						}
 
 					if(dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.botplay)
@@ -3223,7 +3237,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-	function noteMiss(direction:Int = 1, daNote:Note):Void
+	function noteMiss(direction:Int = 1, daNote:Note, ghost:Bool):Void
 	{
 		if (!boyfriend.stunned)
 		{
@@ -3233,7 +3247,8 @@ class PlayState extends MusicBeatState
 				gf.playAnim('sad');
 			}
 			combo = 0;
-			if (!daNote.isSustainNote)
+
+			if (!daNote.isSustainNote && ghost)
 				{
 					misses++;
 					missesLeft = limit - misses;
@@ -3249,6 +3264,7 @@ class PlayState extends MusicBeatState
 					else if (missesLeft <= 5 && !(missRating.animation.curAnim.name == 'dying'))
 						missRating.animation.play('dying');
 				}
+
 			/*if (misses % 5 == 0)
 				{
 					FlxG.sound.play(Paths.music('crack', 'weekmidna'));
@@ -3280,6 +3296,7 @@ class PlayState extends MusicBeatState
 				totalNotesHit -= 1;
 
 			songScore -= 10;
+			// scoreTxt.screenCenter();
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
@@ -3780,4 +3797,5 @@ class PlayState extends MusicBeatState
         }
 
 	var curLight:Int = 0;
+	//lmao gtfo here :S:ASASAS
 }

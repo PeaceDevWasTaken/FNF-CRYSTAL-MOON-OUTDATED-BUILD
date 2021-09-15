@@ -106,20 +106,19 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-				case 'gf-midna':
-					tex = Paths.getSparrowAtlas('characters/GF_midna');
-					frames = tex;
-					animation.addByIndices('singUP', 'Midna GF idle dance', [0], "", 24, false);
-					animation.addByIndices('danceLeft', 'Midna GF idle dance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-					animation.addByIndices('sad', 'Midna GF cri', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
-					animation.addByIndices('danceRight', 'Midna GF idle dance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24,
-						false);
-	
-					addOffset('danceLeft', -150, -100);
-					addOffset('danceRight', -150, -100);
-					addOffset('sad', -152, -102);
-	
-					playAnim('danceRight');
+			case 'gf-midna':
+				tex = Paths.getSparrowAtlas('characters/GF_midna');
+				frames = tex;
+				animation.addByIndices('singUP', 'Midna GF idle dance', [0], "", 24, false);
+				animation.addByIndices('danceLeft', 'Midna GF idle dance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('sad', 'Midna GF cri', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceRight', 'Midna GF idle dance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				addOffset('danceLeft', -150, -100);
+				addOffset('danceRight', -150, -100);
+				addOffset('sad', -152, -102);
+
+				playAnim('danceRight');
 
 			case 'gf-pixel':
 				tex = Paths.getSparrowAtlas('characters/gfPixel');

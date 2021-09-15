@@ -162,13 +162,19 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
+		var funny:FlxSprite = new FlxSprite().loadGraphic(Paths.image('thefunny'));
+		funny.screenCenter();
+		funny.antialiasing = true;
+		add(funny);
+
+		logoBl = new FlxSprite();
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');
+		logoBl.screenCenter();
+		logoBl.y -= 25;
 		logoBl.updateHitbox();
-		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 		add(logoBl);
 

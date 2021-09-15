@@ -112,6 +112,7 @@ class DaBabyOption extends Option
 			PlayState.SONG = Song.loadFromJson("balls", "balls");
 			PlayState.campaignScore = 0;
 			LoadingState.loadAndSwitchState(new PlayState(), true);
+			GameOverSubstate.sex = '-funni';
 		}
 		else
 			{
