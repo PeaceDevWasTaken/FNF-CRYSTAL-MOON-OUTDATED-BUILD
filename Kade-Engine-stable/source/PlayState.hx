@@ -2741,6 +2741,10 @@ class PlayState extends MusicBeatState
 				case 'shit':
 					score = -300;
 					combo = 0;
+					if (!daNote.isSustainNote)
+						missesLeft = limit - limitmisses;
+						misses++;
+						limitmisses++;
 					health -= 0.2;
 					ss = false;
 					shits++;
