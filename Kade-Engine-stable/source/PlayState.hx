@@ -3342,7 +3342,8 @@ class PlayState extends MusicBeatState
 			accuracy = Math.max(0,totalNotesHit / totalPlayed * 100);
 			accuracyDefault = Math.max(0, totalNotesHitDefault / totalPlayed * 100);
 
-			missLimitText.text = "Misses Left: " + (limit - limitmisses);
+			if (!FlxG.save.data.perfect)
+				missLimitText.text = "Misses Left: " + (limit - limitmisses);
 
 			if (missesLeft == 2) // The codes acting dumb so yeah, still it shows the Git Gud at the "1" mark
 				missLimitText.text = "Misses Left: Git Gud";
