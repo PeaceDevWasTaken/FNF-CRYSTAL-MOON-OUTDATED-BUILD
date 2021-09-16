@@ -83,7 +83,6 @@ class PlayState extends MusicBeatState
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
 
-	public var missRating:FlxSprite;
 	var missesLeft:Int;
 
 	public  static var practice:Bool = false;
@@ -138,6 +137,7 @@ class PlayState extends MusicBeatState
 	private var combo:Int = 0;
 	public var limit:Int;
 	public static var misses:Int = 0;
+	public static var limitmisses:Int = 0; //needs to be seperate for the sake of no ghost tapping users
 	private var accuracy:Float = 0.00;
 	private var accuracyDefault:Float = 0.00;
 	private var totalNotesHit:Float = 0;
@@ -181,6 +181,8 @@ class PlayState extends MusicBeatState
 	var santa:FlxSprite;
 
 	var fc:Bool = true;
+
+	var missRating:FlxSprite;
 
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
@@ -245,6 +247,7 @@ class PlayState extends MusicBeatState
 		goods = 0;
 
 		misses = 0;
+		limitmisses = 0;
 
 		if (FlxG.save.data.perfect)
 			limit = 1;
@@ -1009,7 +1012,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		// Add Kade Engine watermark
-		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,"CUSTOM KE BUILD BY TEAM FUNKIN' FOREVER v0.26 ALPHA" + GameOverSubstate.sex, 16);
+		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,"CUSTOM KE BUILD BY TEAM FUNKIN' FOREVER v0.26 ALPHA", 16);
 		kadeEngineWatermark.setFormat(Paths.font("cake.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
@@ -1021,27 +1024,33 @@ class PlayState extends MusicBeatState
 
 
 		// Miss limit text stuff
-
-		if (limit != 1)
-			missLimitText = new FlxText(1000,healthBarBG.y + 50,0,"Misses Left: " + (limit - misses), 16);
-		else
-			missLimitText = new FlxText(1000,healthBarBG.y + 50,0,"Misses Left: Git Gud", 16);
-
-		missLimitText.setFormat(Paths.font("cake.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		missLimitText = new FlxText(1000,healthBarBG.y + 50,0,"", 16);
+		missLimitText.setFormat(Paths.font("cake.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		missLimitText.scrollFactor.set();
 		add(missLimitText);
+		if (FlxG.save.data.perfect)
+		{
+			missLimitText.text = "Misses Left: Git Gud";
+		}
+		else if (storyDifficulty == 3)
+		{
+			missLimitText.text = "Misses Left: " + (limit);
+		}
+		else
+		{
+			missLimitText.text = "Misses Left: " + (limit);
+		}
 
 		// Adding icons to the miss limit(for rating duh)
-
 		missRating = new FlxSprite(1000, healthBarBG.y - 50);
 		missRating.frames = Paths.getSparrowAtlas('missrating','shared');
 		missRating.animation.addByPrefix('whooo', 'whooo', 24, false);
 		missRating.animation.addByPrefix('nice', 'nice', 24, false);
 		missRating.animation.addByPrefix('ouch', 'ouch', 24, false);
 		missRating.animation.addByPrefix('dying', 'dying', 24, false);
+		missRating.animation.play('whooo');
 		missRating.scrollFactor.set();
 		add(missRating);
-		missRating.animation.play('whooo');
 
 		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
 		if (!FlxG.save.data.accuracyDisplay)
@@ -1054,7 +1063,7 @@ class PlayState extends MusicBeatState
 		
 		// offsets
 		scoreTxt.x += 100;
-		missLimitText.x += 15;
+		missLimitText.x += 20;
 
 		add(scoreTxt);
 
@@ -1096,9 +1105,9 @@ class PlayState extends MusicBeatState
 		}
 		kadeEngineWatermark.cameras = [camHUD];
 		missLimitText.cameras = [camHUD];
-		missRating.cameras = [camHUD];
 		if (loadRep)
 			replayTxt.cameras = [camHUD];
+		missRating.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1806,6 +1815,25 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
+		if (missesLeft == 20 && missesLeft == 25)
+		{
+			missRating.animation.play('whooo', true);
+		}
+		else if (missesLeft == 15)
+		{
+			missRating.animation.play('nice', true);
+		}
+		else if (missesLeft == 10)
+		{
+			missRating.animation.play('ouch', true);
+		}
+		else if (missesLeft == 5)
+		{
+			missRating.animation.play('dying', true);
+		}
+		
+		missRating.updateHitbox();
+
 		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
 
@@ -1850,8 +1878,8 @@ class PlayState extends MusicBeatState
 				kadeEngineWatermark.visible = true;
 				healthBar.visible = true;
 				missLimitText.visible = true;
-				missRating.visible = true;
 				iconP1.visible = true;
+				missRating.visible = true;
 				iconP2.visible = true;
 				scoreTxt.visible = true;
 			}
@@ -1974,6 +2002,20 @@ class PlayState extends MusicBeatState
 			iconP2.animation.curAnim.curFrame = 1;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
+
+		if (limitmisses > (limit - 1) && !practice)
+			{
+				boyfriend.stunned = true;
+
+				persistentUpdate = false;
+				persistentDraw = false;
+				paused = true;
+
+				vocals.stop();
+				FlxG.sound.music.stop();
+
+				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+			}
 
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
@@ -2500,7 +2542,7 @@ class PlayState extends MusicBeatState
 								health -= 0.075;
 								vocals.volume = 0;
 								if (theFunne)
-									noteMiss(daNote.noteData, daNote, false);
+									noteMiss(daNote.noteData, daNote);
 							}
 		
 							daNote.visible = false;
@@ -2699,52 +2741,11 @@ class PlayState extends MusicBeatState
 				case 'shit':
 					score = -300;
 					combo = 0;
-					if (!daNote.isSustainNote)
-						{
-							misses++;
-							missesLeft = limit - misses;
-
-							if (missesLeft > 1)
-								missLimitText.text = "Misses Left: " + (limit - misses);
-							else
-								missLimitText.text = "Misses Left: Git Gud";
-							
-							if (missesLeft > 15 && missesLeft <= 20 && !(missRating.animation.curAnim.name == 'nice'))
-								missRating.animation.play('nice');
-							else if (missesLeft > 5  && missesLeft <= 15 && !(missRating.animation.curAnim.name == 'ouch'))
-								missRating.animation.play('ouch');
-							else if (missesLeft <= 5 && !(missRating.animation.curAnim.name == 'dying'))
-								missRating.animation.play('dying');
-						}
-					/*if (misses % 5 == 0)
-						{
-							FlxG.sound.play(Paths.music('crack', 'weekmidna'));
-							var crack = new FlxSprite().loadGraphic(Paths.image('shit', 'shared'));
-							var crackx:Int = new FlxRandom().int(50, 1000);
-							var cracky:Int = new FlxRandom().int(110, 750);
-							crack.x = crackx;
-							crack.y = cracky;
-							add(crack);
-						} */
-					if (misses > (limit - 1) && !practice)
-						{
-							boyfriend.stunned = true;
-		
-							persistentUpdate = false;
-							persistentDraw = false;
-							paused = true;
-		
-							vocals.stop();
-							FlxG.sound.music.stop();
-		
-							openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-						}
-						health -= 0.2;
-						ss = false;
-						shits++;
-						if (FlxG.save.data.accuracyMod == 0)
-							totalNotesHit += 0.25;
-					
+					health -= 0.2;
+					ss = false;
+					shits++;
+					if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit += 0.25;
 				case 'bad':
 					daRating = 'bad';
 					score = 0;
@@ -3104,7 +3105,8 @@ class PlayState extends MusicBeatState
 							for (shit in 0...pressArray.length)
 								{ // if a direction is hit that shouldn't be
 									if (pressArray[shit] && !directionList.contains(shit))
-										noteMiss(shit, null, false);
+										// noteMiss(shit, null);
+										noGhostMiss(shit, null);
 								}
 						}
 						for (coolNote in possibleNotes)
@@ -3122,7 +3124,8 @@ class PlayState extends MusicBeatState
 						{
 							for (shit in 0...pressArray.length)
 								if (pressArray[shit])
-									noteMiss(shit, null, false);
+									// noteMiss(shit, null);
+									noGhostMiss(shit, null);
 						}
 
 					if(dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.botplay)
@@ -3189,92 +3192,16 @@ class PlayState extends MusicBeatState
 			}
 	
 	function antiMash(direction:Int = 1, daNote:Note):Void
-		{
-			if (!boyfriend.stunned)
-			{
-				health -= 0.25;
-				FlxG.sound.play(Paths.music('placeholderlol', 'weekmidna'));
-				if (combo > 5 && gf.animOffsets.exists('sad'))
-				{
-					gf.playAnim('sad');
-				}
-				combo = 0;
-				if (misses > (limit - 1) && !practice)
-					{
-						boyfriend.stunned = true;
-	
-						persistentUpdate = false;
-						persistentDraw = false;
-						paused = true;
-	
-						vocals.stop();
-						FlxG.sound.music.stop();
-	
-						openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-					}
-
-				//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
-				//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
-
-				if (FlxG.save.data.accuracyMod == 1)
-					totalNotesHit -= 1;
-
-				songScore -= 10;
-
-				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-				// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-				// FlxG.log.add('played imss note');
-
- 
-
-				#if windows
-				if (luaModchart != null)
-					luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
-				#end
-
-
-				updateAccuracy();
-			}
-		}
-
-	function noteMiss(direction:Int = 1, daNote:Note, ghost:Bool):Void
 	{
 		if (!boyfriend.stunned)
 		{
-			health -= 0.04;
+			health -= 0.25;
+			FlxG.sound.play(Paths.music('placeholderlol', 'weekmidna'));
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
 			}
 			combo = 0;
-
-			if (!daNote.isSustainNote && ghost)
-				{
-					misses++;
-					missesLeft = limit - misses;
-					if (missesLeft > 1)
-						missLimitText.text = "Misses Left: " + (limit - misses);
-					else
-						missLimitText.text = "Misses Left: Git Gud";
-					
-					if (missesLeft > 15 && missesLeft <= 20 && !(missRating.animation.curAnim.name == 'nice'))
-						missRating.animation.play('nice');
-					else if (missesLeft > 5  && missesLeft <= 15 && !(missRating.animation.curAnim.name == 'ouch'))
-						missRating.animation.play('ouch');
-					else if (missesLeft <= 5 && !(missRating.animation.curAnim.name == 'dying'))
-						missRating.animation.play('dying');
-				}
-
-			/*if (misses % 5 == 0)
-				{
-					FlxG.sound.play(Paths.music('crack', 'weekmidna'));
-					var crack = new FlxSprite().loadGraphic(Paths.image('shit', 'shared'));
-					var crackx:Int = new FlxRandom().int(50, 1000);
-					var cracky:Int = new FlxRandom().int(110, 750);
-					crack.x = crackx;
-					crack.y = cracky;
-					add(crack);
-				} */
 			if (misses > (limit - 1) && !practice)
 				{
 					boyfriend.stunned = true;
@@ -3296,11 +3223,47 @@ class PlayState extends MusicBeatState
 				totalNotesHit -= 1;
 
 			songScore -= 10;
-			// scoreTxt.screenCenter();
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
+
+
+
+			#if windows
+			if (luaModchart != null)
+				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
+			#end
+
+
+			updateAccuracy();
+		}
+	}
+
+	function noteMiss(direction:Int = 1, daNote:Note):Void
+	{
+		if (!boyfriend.stunned)
+		{
+			health -= 0.04;
+			if (combo > 5 && gf.animOffsets.exists('sad'))
+			{
+				gf.playAnim('sad');
+			}
+			combo = 0;
+
+			
+			/*if (!daNote.isSustainNote && daNote != null){
+				misses++;
+				missesLeft = limit - limitmisses;}
+			else if (daNote == null){
+				misses++;}*/
+
+			if (FlxG.save.data.accuracyMod == 1)
+				totalNotesHit -= 1;
+
+			songScore -= 10;
+
+			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 
 			switch (direction)
 			{
@@ -3314,6 +3277,11 @@ class PlayState extends MusicBeatState
 					boyfriend.playAnim('singRIGHTmiss', true);
 			}
 
+			if (!daNote.isSustainNote)
+				missesLeft = limit - limitmisses;
+				misses++;
+				limitmisses++;
+
 			#if windows
 			if (luaModchart != null)
 				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
@@ -3324,31 +3292,56 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	/*function badNoteCheck()
+	// I code like YanDev *dies* @Melaich
+	function noGhostMiss(direction:Int = 1, daNote:Note):Void
+	{
+		if (!boyfriend.stunned)
 		{
-			// just double pasting this shit cuz fuk u
-			// REDO THIS SYSTEM!
-			var upP = controls.UP_P;
-			var rightP = controls.RIGHT_P;
-			var downP = controls.DOWN_P;
-			var leftP = controls.LEFT_P;
-	
-			if (leftP)
-				noteMiss(0);
-			if (upP)
-				noteMiss(2);
-			if (rightP)
-				noteMiss(3);
-			if (downP)
-				noteMiss(1);
-			updateAccuracy();
+			health -= 0.04;
+			if (combo > 5 && gf.animOffsets.exists('sad'))
+			{
+				gf.playAnim('sad');
+			}
+			combo = 0;
+			songScore -= 10;
+
+			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+
+			switch (direction)
+			{
+				case 0:
+					boyfriend.playAnim('singLEFTmiss', true);
+				case 1:
+					boyfriend.playAnim('singDOWNmiss', true);
+				case 2:
+					boyfriend.playAnim('singUPmiss', true);
+				case 3:
+					boyfriend.playAnim('singRIGHTmiss', true);
+			}
+				
+			misses++;
+			
+			#if windows
+			if (luaModchart != null)
+				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
+			#end
+
+
+			if (totalPlayed != 0)
+				updateAccuracy();
 		}
-	*/
+	}
+
 	function updateAccuracy() 
 		{
 			totalPlayed += 1;
 			accuracy = Math.max(0,totalNotesHit / totalPlayed * 100);
 			accuracyDefault = Math.max(0, totalNotesHitDefault / totalPlayed * 100);
+
+			missLimitText.text = "Misses Left: " + (limit - limitmisses);
+
+			if (missesLeft == 2) // The codes acting dumb so yeah, still it shows the Git Gud at the "1" mark
+				missLimitText.text = "Misses Left: Git Gud";
 		}
 
 
@@ -3797,5 +3790,4 @@ class PlayState extends MusicBeatState
         }
 
 	var curLight:Int = 0;
-	//lmao gtfo here :S:ASASAS
 }

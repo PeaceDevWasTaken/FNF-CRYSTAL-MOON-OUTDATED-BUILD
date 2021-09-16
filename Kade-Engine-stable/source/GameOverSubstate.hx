@@ -88,7 +88,15 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
-			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+			if (sex !='-funni')
+			{
+				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+			}
+			else
+			{
+				FlxG.sound.playMusic(Paths.music('CRINGE'));
+			}
+
 			if (PlayState.curStage == 'midna')
 			{
 				FlxG.sound.music.volume = 0.2;
@@ -96,13 +104,13 @@ class GameOverSubstate extends MusicBeatSubstate
 						{
 							FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 15, 16), function volume():Void
 								{
-									FlxTween.tween(FlxG.sound.music, {volume: 1}, 1, {ease: FlxEase.cubeInOut});
+									FlxTween.tween(FlxG.sound.music, {volume: 0.9}, 2, {ease: FlxEase.cubeInOut});
 								});
 						}
 					else
 						{FlxG.sound.play(Paths.soundRandom('midnalines/bfdead/', 1, 14), function volume():Void
 						{
-							FlxTween.tween(FlxG.sound.music, {volume: 1}, 1, {ease: FlxEase.cubeInOut});
+							FlxTween.tween(FlxG.sound.music, {volume: 0.9}, 2, {ease: FlxEase.cubeInOut});
 						});}
 				
 			}
