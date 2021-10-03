@@ -65,7 +65,7 @@ class DialogueBox extends FlxSpriteGroup
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'senpai' | 'lunar-beginnings':
+			case 'senpai':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
@@ -160,7 +160,7 @@ class DialogueBox extends FlxSpriteGroup
 			dropText.color = FlxColor.BLACK;
 		}
 
-		//dropText.text = swagDialogue.text;
+		dropText.text = swagDialogue.text;
 
 		if (box.animation.curAnim != null)
 		{

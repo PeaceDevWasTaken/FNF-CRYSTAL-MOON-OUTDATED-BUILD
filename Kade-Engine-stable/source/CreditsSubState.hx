@@ -31,8 +31,8 @@ class CreditsSubState extends MusicBeatState
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"\n\nCREDITS:\n\n"
-			+ "\n\nLead: Alternate Peace\n\n"
-			+ "\n\nCoding: CarlDev & Alternate Peace\n\n"
+			+ "\n\nLead: Peace_Dev\n\n"
+			+ "\n\nCoding: CarlDev & Peace_Dev\n\n"
 			+ "\n\nMusic: Ghasty, Kalpy, Meta\n\n"
 			+ "\n\nArt and Animation: Meliach, Savvy-Peridot, Haram!64, Mr. Meh, SupremeRG\n\n"
 			+ "\n\nVoice Acting: CaitlinDiVA, Sticky (Stickys Lines are too be added.)\n\n"
